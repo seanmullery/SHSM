@@ -9,7 +9,7 @@ histo2 = np.zeros((10,128))  # This will contain 10 histograms each processed by
 
 for x_0 in range(1, 11):
     print(x_0)
-    for file in Path('./4000Images/').glob('*/'):
+    for file in Path('./4000Images/').glob('*.jpg'):
         gt_bgr = cv2.imread('./' + str(file))
         gt_lab = cv2.cvtColor(gt_bgr, cv2.COLOR_BGR2LAB)  # Convert BGR to LAB
         gt_comp = np.array(gt_lab[:, :, 1:3], np.float64)   # Convert AB to floats
