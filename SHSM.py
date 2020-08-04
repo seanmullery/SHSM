@@ -158,7 +158,7 @@ def create_output_map_images(gt_bgr, cl_bgr, gt_lhc, cl_lhc, res_l, res_h, res_c
     full_fig = np.vstack([full_fig, white_h_divider])
     full_fig = np.vstack([full_fig, c])
 
-    cv2.imwrite('./SSIM_SSHM_map.png', full_fig)
+    cv2.imwrite('./SSIM_SHSM_map.png', full_fig)
 
 
 def compare(gt_bgr, cl_bgr, create_images=False):
