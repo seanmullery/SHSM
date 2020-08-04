@@ -13,4 +13,4 @@ usage: python singleTest.py -g <ground_truth_image> -c <colourised_image>
 This will print out the comparison result to the console and will also create
 a map image showing where the images differ, as you see from the example below.
 
-<img src='https:/github.com/seanmullery/SSIM_SHSM_map.png' width=800>
+<img src='https:/github.com/seanmullery/SHSM/SSIM_SHSM_map.png' width=800>
