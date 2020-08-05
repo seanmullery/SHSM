@@ -74,3 +74,37 @@ Do keep in mind that the quality of compression used will effect the results.
 
 To create your own grey-scale prior you can simply convert the colour ground-truth
 images to the CIEL*a*b* space and use only the L-channel.
+
+
+# SHSM library
+The file SHSM.py contains the library functions for SHSM.
+It contains the SSIM function for standard SSIM which is used the the chroma comparison.
+The SHSM function for the Hue comparison.
+
+A function called r2p or changing from cartesian to polar form. We take the CIEL*a*b* space and with a+jb we  change to c &angle; h.
+
+A function called compare. This function will take the BGR images, convert them to Lhc and send each to the appropriate comparison function (SSIM or SHSM). It will report the comparison values as a list [L-comparison, h-comparison, c-comparison, combined h*c comparison]. The L-comparison is rarely used but can give an indication of whether
+a lot of deterioration has occurred to the file during processing. For example,
+if a high-compression rate is used then this will show up as a difference between
+the L-channel of the ground-truth and the L-channel of the colourisation. We can also expect that some deterioration will occur from quantization while changing between BGR - CIEL*a*b* - Lhc - CIEL*a*b* - BGR.
+When calling the compare function you can specify that you want to create output
+images, which is set to False by default. This will produce the output map
+(used above in the single test example) but will only create one output image called
+SSIM_SHSM_map.png. This means that if you call the compare function multiple times, as
+we do in the testSOTA.py and testRecolourisations.py it will continuously overwrite
+this file but will also slow the algorithm down considerably while doing this.
+It would not take much coding effort to modify this to your desired implementation
+if you wished to change the file name or output multiple files as maps.
+
+
+
+# Hyper-parameter choices
+Two files "genFig1.py" and "genFig2.py" are used to generate Figures 1 & 2 from
+our paper. These helped us to determine the best value for hyper-parameters.
+However for this we used 4000 images from the places dataset. We have included the
+directory structure for this, but not the actual files. You can re-create this
+experiment with files of your own but there are are hard-coded numbers in the files
+which assue 4000 images of 256 x 256 were used. If you change the number or size of
+the images you should change these numbers. We would expect that whatever images you
+use, as long as you have a significant number of them and they are natural images,
+you should see similar results.
